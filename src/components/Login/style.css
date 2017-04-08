@@ -1,0 +1,17 @@
+.new-user {
+  margin-top: 20px;
+}
+
+.new-user label {
+  font-weight: normal;
+}
+
+.new-user input[type=checkbox] {
+  position: relative;
+  left: 10px;
+  top: 2px;
+}
+
+.panel-default {
+  margin-top: 50px;
+}

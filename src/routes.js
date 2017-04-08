@@ -1,15 +1,14 @@
-// src/routes.js
 import React from 'react';
-import { Router, Route } from 'react-router'
+import { Router, Route } from 'react-router';
 
-import App from './components/App';
-import About from './components/About';
+import Login from './components/Login';
+import MapElement from './components/MapElement';
 import NotFound from './components/NotFound';
 
 const Routes = (props) => (
   <Router {...props}>
-    <Route path="/" component={App} />
-    <Route path="/about" component={About} />
+    <Route path="/" component={Login} />
+    <Route path="/map" component={MapElement} />
     <Route path="*" component={NotFound} />
   </Router>
 );

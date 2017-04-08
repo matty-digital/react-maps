@@ -1,19 +1,21 @@
-// server/app.js
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
+const express     = require('express');
+const path        = require('path');
+const bodyParser  = require('body-parser');
+const cookieParser= require('cookie-parser');
+const controllers = require('./controllers');
+const cors        = require('cors');
+const app         = express();
 
-const app = express();
+app.use(cors());
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, '..')));
 
-// Setup logger
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+app.post('/api/create', controllers.createDo);
 
-// Serve static assets
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+app.post('/api/login', controllers.loginDo);
 
-// Always return the main index.html, so react-router render the route in the client
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-});
+app.post('/api/logout', controllers.logoutDo);
 
 module.exports = app;

@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "email": "asd@asd.com",
+      "password": "asd",
+      "loggedin": false,
+      "coords": {
+        "lat": "40.440624",
+        "lng": "-79.99588799999998"
+      }
+    },
+    {
+      "email": "mbowytz@gmail.com",
+      "password": "password",
+      "loggedin": false,
+      "coords": {
+        "lat": "38.54703767932679",
+        "lng": "-80.04257989453122"
+      }
+    }
+  ]
+}
