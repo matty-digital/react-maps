@@ -1,6 +1,8 @@
 ## Matt Bowytz Code Assessment
 
-open terminal window -
+clone and `npm install`
+
+open a terminal window -
 `npm run start:server` - starts backend server on `localhost:9000`
 
 open a second terminal window -
