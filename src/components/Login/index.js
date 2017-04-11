@@ -11,7 +11,7 @@ class Login extends Component {
       isNew: false,
       action: 'http://localhost:9000/api/login',
       method: 'POST',
-      user: cookie.load('user') || { loggedin: false }
+      user: cookie.load('user')
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,9 +27,9 @@ class Login extends Component {
     }).done(function(data) {
       if (data.error) {
         $('.new-user').append('<p class="error" style="color:red;">' + data.error + '</p>');
-        cookie.save('user', {loggedin: false});
       } else {
         cookie.save('user', data);
+        cookie.save('showMap', 'true');
         window.location = '/map';
       }
     }).fail(function(data) {

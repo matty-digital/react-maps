@@ -28,7 +28,7 @@ class GoogleMapHandling extends Component {
     this.state = {
       zoom: 10,
       center: INITIAL_CENTER,
-      user: cookie.load('user') || { loggedin: false },
+      user: cookie.load('user'),
       coords: { INITIAL_CENTER }
     };
 
@@ -50,7 +50,6 @@ class GoogleMapHandling extends Component {
       user: {
         email: this.state.user.email,
         password: this.state.user.password,
-        loggedin: true,
         coords: {
           lat: lat,
           lng: lng
@@ -76,7 +75,7 @@ class GoogleMapHandling extends Component {
       url: 'http://localhost:9000/api/logout?lat=' + this.state.user.coords.lat + '&lng=' + this.state.user.coords.lng,
       method: 'POST'
     }).done(function(data) {
-      cookie.save('user', {loggedin: false});
+      cookie.save('showMap', 'false');
       window.location = '/';
     }).fail(function(data) {
       console.log(data);
@@ -94,7 +93,7 @@ class GoogleMapHandling extends Component {
   }
 
   render() {
-    if (this.state.user.loggedin === true) {
+    if (cookie.load('showMap') === 'true') {
       return (
         <div className="container">
           <div className="row vertical-offset-100">
